@@ -1,0 +1,13 @@
+[General]
+Twitter: yes
+Timer: 15
+
+[holarse]
+plugin: rssfeed
+url: https://www.holarse-linuxgaming.de/rss.xml
+
+[Twitter]
+CONSUMER_KEY: value
+CONSUMER_SECRET: value
+ACCESS_KEY: value
+ACCESS_SECRET: value
