@@ -1,6 +1,5 @@
 import feedparser
 import time
-from datetime import datetime
 
 '''
 TODO: Implement fallbacks for RSS Feeds, where the 'created' or 'published' tags are missing
