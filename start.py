@@ -1,8 +1,7 @@
 import configparser
 import modules.rssfeed
 import socialplugins.twitter
-
-# TODO: Fix Lenght of a Tweet!
+import socialplugins.gnusocial
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -17,10 +16,8 @@ def main():
             url = config.get(sections, 'url', fallback='no')
             updates = read_rss(intervall, url)
             if updates is not False:
-                print('There is an update!')
                 send_to_twitter(updates)
-            else:
-                print('There is currently no updates.')
+                send_to_gnusocial(updates)
 
 
 def read_rss(intervall, url):
@@ -36,15 +33,26 @@ def send_to_twitter(array):
     access_secret = config.get('Twitter', 'ACCESS_SECRET')
 
     for title_key, rss_entries in array.items():
-        tweet = title_key + ': ' + rss_entries[0]
-        if len(tweet) > 140:
-            print('TODO: Fix Lenght of a Tweet!')
-        else:
-            print(tweet)
             twitter \
                 = socialplugins.twitter.Twitter(consumer_key, consumer_secret,
                                                 access_key, access_secret)
+            tweet = twitter.make_tweet(title_key, rss_entries[0])
+            print('Social Media Broadcaster: (Twitter) ' + tweet)
             twitter.sendTweet(tweet)
+
+
+def send_to_gnusocial(array):
+    username = config.get('GNUSocial', 'username')
+    password = config.get('GNUSocial', 'password')
+    url = config.get('GNUSocial', 'url')
+
+    for title_key, rss_entries in array.items():
+            gnusocial \
+                = socialplugins.gnusocial.GNUSocial(url, username, password)
+            queet = gnusocial.make_queet(title_key, rss_entries[0])
+            print('Social Media Broadcaster: (GnuSocial) ' + queet)
+            gnusocial.send_queet(queet)
+
 
 if __name__ == "__main__":
     main()

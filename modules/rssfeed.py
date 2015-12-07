@@ -24,7 +24,7 @@ class RSSFeed:
         try:
             return self.rssfeed.published_parsed
         except AttributeError:
-            # If theres no lastBuildDate or similiar in the RSSFeed
+            # If there is no lastBuildDate or similiar in the RSSFeed
             return self.rssfeed.updated_parsed
 
     def check_last_update(self, update_time):
