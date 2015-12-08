@@ -27,18 +27,14 @@ def read_rss(intervall, url):
 
 
 def send_to_twitter(array):
-    consumer_key = config.get('Twitter', 'CONSUMER_KEY')
-    consumer_secret = config.get('Twitter', 'CONSUMER_SECRET')
     access_key = config.get('Twitter', 'ACCESS_KEY')
     access_secret = config.get('Twitter', 'ACCESS_SECRET')
 
     for title_key, rss_entries in array.items():
-            twitter \
-                = socialplugins.twitter.Twitter(consumer_key, consumer_secret,
-                                                access_key, access_secret)
+            twitter = socialplugins.twitter.Twitter(access_key, access_secret)
             tweet = twitter.make_tweet(title_key, rss_entries[0])
             print('Social Media Broadcaster: (Twitter) ' + tweet)
-            twitter.sendTweet(tweet)
+            twitter.send_tweet(tweet)
 
 
 def send_to_gnusocial(array):
