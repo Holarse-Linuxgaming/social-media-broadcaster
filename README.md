@@ -1,7 +1,8 @@
-# social-media-broadcaster
-Broadcastet social media
+# Social Media Broadcaster
 
-## Benötigte Bibliotheken / Necessary Libraries: ##
+Broadcasts an article from a specific RSS feed to the social media (Twitter, GnuSocial).
+
+## Necessary Libraries: ##
 
 tweepy - https://github.com/tweepy/tweepy
 (`pip install tweepy`)
@@ -12,17 +13,18 @@ feedparser - https://github.com/kurtmckee/feedparser
 requests - https://github.com/kennethreitz/requests
 (`pip install requests`)
 
-...
+mysql-connector - https://dev.mysql.com/downloads/connector/python/
+(Look at the official homepage for instructions.)
 
 ## Config ##
 
-Die Zeit (timer) wird in der Konfigurationsdatei in Minuten 
-angegeben.
+-If you want to use for e.g. only the Twitter export, you delete the other (e.g. GNUSocial) from the config.
+-The Intervall in General is specified in minutes.
+(1h = 60min, 1d = 1440min)
+
+
 
 ## Installation ##
 
-Folgt ... ;-)
+follows in a few days...
 
-Für Twitter wird ein "Access Key" und ein "Access Secret" benötigt.
-Diese kann man sich von Twitter erfragen, im Ordner "helper" steht ein 
-"twitter_oath.py" - Skript dafür bereit.
