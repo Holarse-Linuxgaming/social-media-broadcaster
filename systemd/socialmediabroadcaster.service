@@ -1,0 +1,15 @@
+[Unit]
+Description=Social Media Broadcaster Service
+After=network.target
+Requisite=mysqld.service
+
+[Service]
+User=socialmediabroadcaster
+Type=oneshot
+PrivateTmp=yes
+ExecStart=/usr/bin/python3 /home/socialmediabroadcaster/start.py
+WorkingDirectory=/home/socialmediabroadcaster
+
+[Install]
+WantedBy=multi-user.target
+
