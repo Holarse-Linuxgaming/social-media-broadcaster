@@ -62,8 +62,10 @@ def main():
                             access_key = config.get('Twitter', 'ACCESS_KEY')
                             access_secret = config.get('Twitter',
                                                        'ACCESS_SECRET')
-                            prefix = config.get('Twitter', 'prefixmsg')
-                            suffix = config.get('Twitter', 'suffixmsg')
+                            prefix = config.get('Twitter', 'prefixmsg',
+                                                fallback='')
+                            suffix = config.get('Twitter', 'suffixmsg',
+                                                fallback='')
                             twitter =  \
                                 socialplugins.twitter.Twitter(access_key,
                                                               access_secret,
@@ -76,8 +78,10 @@ def main():
                         if config.has_section('GNUSocial'):
                             username = config.get('GNUSocial', 'username')
                             password = config.get('GNUSocial', 'password')
-                            prefix = config.get('GNUSocial', 'prefixmsg')
-                            suffix = config.get('GNUSocial', 'suffixmsg')
+                            prefix = config.get('GNUSocial', 'prefixmsg',
+                                                fallback='')
+                            suffix = config.get('GNUSocial', 'suffixmsg',
+                                                fallback='')
                             gnu_url = config.get('GNUSocial', 'url')
                             gnusocial =  \
                                 socialplugins.gnusocial.GNUSocial(gnu_url,
