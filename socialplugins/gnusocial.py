@@ -11,24 +11,29 @@ import xml.etree.ElementTree as ET
 
 class GNUSocial:
 
-    def __init__(self, url, username, password):
+    def __init__(self, url, username, password, prefix_msg='', suffix_msg=''):
         self.url = url + '/api/statuses/update.xml'
         self.username = username
         self.password = password
+        self.prefix_msg = prefix_msg.strip('"')
+        self.suffix_msg = suffix_msg.strip('"')
         self.logger = logging.getLogger(__name__)
 
     def make_message(self, title, url):
         """
         The maximum length of a queet is 1024 characters.
         """
-        queet = title + ': ' + url
+        queet = self.prefix_msg + title + ': ' + url + self.suffix_msg
 
         if len(queet) > 1024:
             lenght_url = len(url)
-            length_for_title = 1024 - lenght_url + 7
+            length_prefix = len(self.prefix_msg)
+            length_suffix = len(self.suffix_msg)
+            length_for_title = 1024 - (7 + lenght_url + length_prefix + \
+                                       length_suffix)
             # 7 is for '(...): '
-
-            queet = title[:length_for_title] + '(...): ' + url
+            queet = self.prefix_msg + title[:length_for_title] + \
+                    '(...): ' + url + self.suffix_msg
             return queet
         else:
             return queet

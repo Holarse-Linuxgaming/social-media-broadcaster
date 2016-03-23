@@ -62,9 +62,13 @@ def main():
                             access_key = config.get('Twitter', 'ACCESS_KEY')
                             access_secret = config.get('Twitter',
                                                        'ACCESS_SECRET')
+                            prefix = config.get('Twitter', 'prefixmsg')
+                            suffix = config.get('Twitter', 'suffixmsg')
                             twitter =  \
                                 socialplugins.twitter.Twitter(access_key,
-                                                              access_secret)
+                                                              access_secret,
+                                                              prefix,
+                                                              suffix)
                             message = twitter.make_message(rss_title,
                                                            rss_entry[0])
                             twitter.send_message(message, rss_tbl_name,
@@ -72,11 +76,15 @@ def main():
                         if config.has_section('GNUSocial'):
                             username = config.get('GNUSocial', 'username')
                             password = config.get('GNUSocial', 'password')
+                            prefix = config.get('GNUSocial', 'prefixmsg')
+                            suffix = config.get('GNUSocial', 'suffixmsg')
                             gnu_url = config.get('GNUSocial', 'url')
                             gnusocial =  \
                                 socialplugins.gnusocial.GNUSocial(gnu_url,
                                                                   username,
-                                                                  password)
+                                                                  password,
+                                                                  prefix,
+                                                                  suffix)
                             message = gnusocial.make_message(rss_title,
                                                              rss_entry[0])
                             gnusocial.send_message(message, rss_tbl_name,

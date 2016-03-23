@@ -21,7 +21,8 @@ mysql-connector - https://dev.mysql.com/downloads/connector/python/
 - Wenn man die Artikel nur auf Twitter veröffentlichen möchte, kann man die anderen Abschnitte (z.B. GNUSocial) von der Konfig löschen.
 - Das Intervall wird in Minuten angebenen.
 (1h = 60min, 1d = 1440min)
-
+- Der Inhalt vom Prefix und Suffix werden mit Anführungszeichen("") angegeben.
+(Bsp: suffixmsg = " #linuxgaming"
 ## Installation ##
 
 folt in einigen Tagen ... ;-)

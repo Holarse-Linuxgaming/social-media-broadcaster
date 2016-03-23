@@ -10,7 +10,7 @@ import logging
 
 class Twitter:
 
-    def __init__(self, access_key, access_secret):
+    def __init__(self, access_key, access_secret, prefix_msg='', suffix_msg=''):
         """
          The token and the secret are encoded in Base64 because
          of the policies of Twitter.
@@ -24,6 +24,8 @@ class Twitter:
                                           ).decode("utf-8")
         self.access_key = access_key
         self.access_secret = access_secret
+        self.prefix_msg = prefix_msg.strip('"')
+        self.suffix_msg = suffix_msg.strip('"')
         self.logger = logging.getLogger(__name__)
 
     @property
@@ -44,12 +46,15 @@ class Twitter:
         links will be shortened to 23 characters. Because of that
         the description (title) of the feed can have 117 characters.
         """
-        tweet = title + ': ' + url
+        tweet = self.prefix_msg + title + ': ' + url + self.suffix_msg
 
         if len(title) > 115:
-            length_url_and_space = 23 + 9
-            length_for_title = 140 - length_url_and_space
-            tweet = title[:length_for_title] + ' (...): ' + url
+            length_prefix = len(self.prefix_msg)
+            length_suffix = len(self.suffix_msg)
+            length_url_others = 23 + 7 + length_prefix + length_suffix
+            length_for_title = 140 - length_url_others
+            tweet = self.prefix_msg + title[:length_for_title] + '(...): ' + \
+                    url + self.suffix_msg
             return tweet
         else:
             return tweet
@@ -71,7 +76,7 @@ class Twitter:
                 mysql_tbl_sc = 'social_twitter'
                 message_time = message.created_at.strftime('%Y-%m-%d %H:%M:%S')
                 message_url = 'https://twitter.com/' + \
-                              message.user.screen_name + '/status/' +  \
+                              message.user.screen_name + '/status/' + \
                               message.id_str
                 try:
                     mysql_cn = mysql.connector.connect(user=mysql_user,
