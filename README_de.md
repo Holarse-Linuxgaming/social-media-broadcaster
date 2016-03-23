@@ -23,6 +23,7 @@ mysql-connector - https://dev.mysql.com/downloads/connector/python/
 (1h = 60min, 1d = 1440min)
 - Der Inhalt vom Prefix und Suffix werden mit Anführungszeichen("") angegeben.
 (Bsp: suffixmsg = " #linuxgaming"
+
 ## Installation ##
 
-folt in einigen Tagen ... ;-)
+folgt in einigen Tagen ... ;-)

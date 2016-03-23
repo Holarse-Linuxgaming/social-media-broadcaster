@@ -18,12 +18,9 @@ mysql-connector - https://dev.mysql.com/downloads/connector/python/
 
 ## Config ##
 
--If you want to use for e.g. only the Twitter export, you delete the other (e.g. GNUSocial) from the config.
--The Intervall in General is specified in minutes.
-(1h = 60min, 1d = 1440min)
-- The content of the prefix and suffix must be surrounded by double ticks.
-(e.g. suffixmsg = " #linuxgaming")
-
+- If you want to use for e.g. only the Twitter export, you delete the other (e.g. GNUSocial) from the config.
+- The Intervall in General is specified in minutes. (1h = 60min, 1d = 1440min)
+- The content of the prefix and suffix must be surrounded by double ticks. (e.g. suffixmsg = " #linuxgaming")
 
 ## Installation ##
 
