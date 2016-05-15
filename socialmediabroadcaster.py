@@ -101,7 +101,9 @@ def parse():
                         default='INFO',
                         choices=['debug', 'info', 'warning',
                                  'error', 'critical'],
-                        help='Sets the level of the logs. (%(choices)s)')
+                        help='Set the level of the logs. (%(choices)s)')
+    parser.add_argument('-s', '--stats', action='store_true',
+                        help='Print some data statistics from the Database')
     opts = parser.parse_args()
     return opts
 
